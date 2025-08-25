@@ -37,5 +37,6 @@ def run_svm_from_yaml(config_file="svm.yaml"):
     return prediction.tolist()
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     run_svm_from_yaml("svm.yaml")
+
