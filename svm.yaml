@@ -1,0 +1,17 @@
+model:
+  type: "SVC"
+  kernel: "linear"
+  random_state: 42
+
+data:
+  X: 
+    - [1, 2]
+    - [2, 3]
+    - [3, 4]
+    - [4, 5]
+  y: [0, 0, 1, 1]
+
+predict:
+  input:
+    - [1.5, 2.5]
+    - [3.5, 4.5]
