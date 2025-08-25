@@ -1,17 +1,29 @@
-model:
-  type: "SVC"
-  kernel: "linear"
-  random_state: 42
+name: Run SVM Script
 
-data:
-  X: 
-    - [1, 2]
-    - [2, 3]
-    - [3, 4]
-    - [4, 5]
-  y: [0, 0, 1, 1]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-predict:
-  input:
-    - [1.5, 2.5]
-    - [3.5, 4.5]
+jobs:
+  run-svm:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install numpy pandas scikit-learn pyyaml
+
+    - name: Run SVM script
+      run: |
+        python svm.py
